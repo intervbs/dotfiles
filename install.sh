@@ -2,6 +2,5 @@
 
 set -ex
 
-flake = "legion"
 source ./scripts/setup.sh
-nixos-install --flake .#$flake
+nixos-install --flake .#legion
