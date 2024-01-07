@@ -1,9 +1,8 @@
 {
   pkgs,
-  userSetup,
   ...
 }: let
-  username = "${userSetup.username}";
+  username = "intervbs";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config";
 
