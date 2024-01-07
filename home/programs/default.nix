@@ -34,6 +34,7 @@ in [
   ./browser/teams.nix
   ./git.nix
   ./gnome.nix
+  ./intellij.nix
   ./network.nix
   ./vscode.nix
   more

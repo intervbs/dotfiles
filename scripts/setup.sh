@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DEVICE_NAME="/dev/nvme0n1"
+DEVICE_NAME="/dev/nvme1n1"
 EFI_SIZE="512MiB"
 SWAP_SIZE="9.1GiB"
 LABEL_NAME="NIXOS"

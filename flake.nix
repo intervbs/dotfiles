@@ -19,8 +19,6 @@
     impermanence.url = "github:riscadoa/impermanence"; # Utilities for opt-in persistance
     agenix.url = "github:ryantm/agenix"; # Secrets management
 
-    # Neovim built with flake support
-    neovim-flake.url = "github:gako358/neovim";
   };
 
   outputs = {
@@ -49,8 +47,6 @@
       default = legacyPackages.${system}.callPackage ./shell.nix {};
     });
 
-    userSetup = import ./userSetting.nix;
-
     legacyPackages = forAllSystems (system:
       import inputs.nixpkgs {
         inherit system;
@@ -60,8 +56,8 @@
 
     nixosConfigurations = {
       # System Config
-      ${userSetup.hostname} = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs userSetup;};
+       legion = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
         modules = [
           ./hosts/configuration.nix
           ./hosts/users
@@ -69,9 +65,9 @@
       };
     };
     homeConfigurations = {
-      "${userSetup.username}@${userSetup.hostname}" = home-manager.lib.homeManagerConfiguration {
+      "intervbs@legion" = home-manager.lib.homeManagerConfiguration {
         pkgs = legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs userSetup;};
+        extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home/home.nix
           ./home/users

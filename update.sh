@@ -2,16 +2,13 @@
 
 set -ex
 
-git add -f userSetting.nix
-
-# Extract the username from the userSetting.nix file
-flake=$(grep 'hostname' userSetting.nix | cut -d '"' -f 2)
-home_name="dev@$flake"
+flake="legion"
+home_name="intervbs@$flake"
 
 # Test system
 clear
 echo "Do you want to test the system or home-manager?"
-echo "1. System, 2. Home-manager, 3. Both, 4. None"
+echo "1. System, 2. Home-manager, 3. None"
 read test
 
 if [[ "$test" == "1" ]]; then
@@ -57,6 +54,3 @@ clear
 # Update home-manager
 echo "System updated!, updating home-manager for $home_name..."
 home-manager switch --flake .#$home_name
-
-# Clean up
-git reset userSetting.nix

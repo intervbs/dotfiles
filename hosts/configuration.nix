@@ -1,7 +1,6 @@
 {
   config,
   inputs,
-  userSetup,
   lib,
   pkgs,
   ...
@@ -13,24 +12,6 @@
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
-  };
-  system.autoUpgrade = {
-    enable = true;
-    flake = "github:HNIKT-Tjenesteutvikling-Systemutvikling/NixHNIKT";
-    allowReboot = true;
-    persistent = true;
-    rebootWindow = {
-      lower = "22:00";
-      upper = "00:00";
-    };
-    dates = "weekly";
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-      "--no-write-lock-file"
-    ];
-    randomizedDelaySec = "1min";
   };
   nix = {
     registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
@@ -69,10 +50,7 @@
     printing.enable = true; # Enable CUPS to print documents.
     # Enable the X11 windowing system.
     xserver = {
-      videoDrivers =
-        if userSetup.displayLink
-        then ["intel" "displaylink"]
-        else ["intel"];
+      videoDrivers = ["amdgpu"];
     };
     blueman.enable = true;
     dbus.enable = true;

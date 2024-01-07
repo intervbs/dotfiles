@@ -14,10 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod"];
+  boot.initrd.availableKernelModules = ["xhci_pci" "vmd" "nvme" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = [
-    "kvm-intel"
+    "kvm-amd"
     "virtio"
     "bluetooth"
     "btusb"
@@ -25,42 +25,42 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme1n1p3";
     fsType = "btrfs";
     options = ["subvol=root" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/home" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme1n1p3";
     fsType = "btrfs";
     options = ["subvol=home" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme1n1p3";
     fsType = "btrfs";
     options = ["subvol=nix" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/var" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme1n1p3";
     fsType = "btrfs";
     options = ["subvol=var" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/tmp" = {
-    device = "/dev/nvme0n1p3";
+    device = "/dev/nvme1n1p3";
     fsType = "btrfs";
     options = ["subvol=tmp" "noatime" "compress=zstd" "ssd"];
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/nvme1n1p1";
     fsType = "vfat";
   };
 
   swapDevices = [
-    {device = "/dev/nvme0n1p2";}
+    {device = "/dev/nvme1n1p2";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
