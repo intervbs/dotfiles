@@ -36,7 +36,7 @@
     "en_US.UTF-8/UTF-8"
   ];
   users.users = {
-    dev = {
+    intervbs = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect

@@ -17,10 +17,6 @@ if [[ "$test" == "1" ]]; then
 elif [[ "$test" == "2" ]]; then
     home-manager build --flake .#$home_name
     exit 0
-elif [[ "$test" == "3" ]]; then
-    nixos-rebuild build --flake .#$flake
-    home-manager build --flake .#$home_name
-    exit 0
 else
     continue
 fi

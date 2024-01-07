@@ -18,7 +18,7 @@ with lib; let
     nixgcd = "sudo nix-collect-garbage -d";
 
     # Locations
-    dot = "cd ~/Sources/NixHNIKT";
+    dot = "cd ~/dotfiles";
     work = "cd ~/Projects/workspace/";
 
     update = "nix flake update";

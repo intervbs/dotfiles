@@ -8,6 +8,7 @@
 
   defaultPkgs = with pkgs; [
     acpi                      # battery info
+    android-studio            # android studio
     arandr                    # screen layout manager
     btop                      # alternative to htop & ytop
     cacert                    # ca certificates
