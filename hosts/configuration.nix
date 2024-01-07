@@ -83,6 +83,19 @@
     # Enable braodcom chip for bluetooth
     enableAllFirmware = true;
     pulseaudio.enable = false;
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = false;
+      powerManagement.finegrained = false;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      prime = {
+        sync.enable = true;
+        amdgpuBusId = "PCI:6:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
   };
   # Enable virtualisation and docker support
   virtualisation = {
@@ -99,6 +112,5 @@
   nixpkgs.config.permittedInsecurePackages = [
     "python-2.7.18.6"
   ];
-
   system.stateVersion = "23.11";
 }
