@@ -1,5 +1,5 @@
 {
-  description = "HNIKT Flake";
+  description = "Intervbs Flake";
 
   inputs = {
     # Nixpkgs
@@ -26,7 +26,6 @@
     hardware,
     flake-utils,
     home-manager,
-    neovim-flake,
     nur,
     ...
   } @ inputs: let

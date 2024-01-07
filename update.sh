@@ -13,16 +13,13 @@ read test
 
 if [[ "$test" == "1" ]]; then
     nixos-rebuild build --flake .#$flake
-    git reset userSetting.nix
     exit 0
 elif [[ "$test" == "2" ]]; then
     home-manager build --flake .#$home_name
-    git reset userSetting.nix
     exit 0
 elif [[ "$test" == "3" ]]; then
     nixos-rebuild build --flake .#$flake
     home-manager build --flake .#$home_name
-    git reset userSetting.nix
     exit 0
 else
     continue
