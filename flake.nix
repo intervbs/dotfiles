@@ -19,6 +19,10 @@
     impermanence.url = "github:riscadoa/impermanence"; # Utilities for opt-in persistance
     agenix.url = "github:ryantm/agenix"; # Secrets management
 
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -26,6 +30,7 @@
     hardware,
     flake-utils,
     home-manager,
+    android-nixpkgs,
     nur,
     ...
   } @ inputs: let
@@ -55,7 +60,7 @@
 
     nixosConfigurations = {
       # System Config
-       legion = nixpkgs.lib.nixosSystem {
+      legion = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/configuration.nix

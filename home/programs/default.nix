@@ -32,6 +32,7 @@ in [
   ./browser/firefox.nix
   ./browser/slack.nix
   ./browser/teams.nix
+  ./android.nix
   ./git.nix
   ./gnome.nix
   ./intellij.nix
